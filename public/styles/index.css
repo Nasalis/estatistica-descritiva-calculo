@@ -1,0 +1,144 @@
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 12vh;
+  padding: 0 30px;
+  background: linear-gradient(45deg, #1e4e58, #0b616d);
+}
+
+header .header-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 12vh;
+}
+
+header .header-menu .header-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #f6f6f6;
+}
+
+header .header-menu .header-title h1 {
+  padding-right: 0.8rem;
+  letter-spacing: 1px;
+}
+
+header .header-menu .header-title i {
+  font-size: 2rem;
+}
+
+header .header-menu .menuList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 200px;
+}
+
+header .header-menu .menuList .menuItem {
+  font-size: 1.1rem;
+  cursor: pointer;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s;
+}
+
+header .header-menu .menuList .menuItem a {
+  color: #f2f2f2;
+}
+
+header .header-menu .menuList .menuItem:hover {
+  font-size: 1.2rem;
+}
+
+header .header-menu .menuList .menuItem:hover a {
+  color: #f2f2f2;
+}
+
+header .menu-toggle {
+  display: none;
+}
+
+header .menu-toggle i {
+  font-size: 2rem;
+  color: #f2f2f2;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 620px) {
+  header .header-title h1 {
+    font-size: 1rem;
+  }
+  header .header-title i {
+    display: none;
+  }
+  header .menuList {
+    position: absolute;
+    height: 100vh;
+    top: 12vh;
+    right: 100%;
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+  }
+  header .menuList.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    background-color: #222;
+    width: 100%;
+    right: 0;
+    z-index: 1;
+  }
+  header .menuList.active .menuItem {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    width: 100%;
+    text-align: center;
+  }
+  header .menuList.active .menuItem:hover {
+    background-color: #f2f2f2;
+    font-size: 2rem;
+    padding: 10px;
+  }
+  header .menuList.active .menuItem:hover a {
+    color: #131313;
+  }
+  header .menu-toggle {
+    display: block;
+  }
+}
+/*# sourceMappingURL=index.css.map */
