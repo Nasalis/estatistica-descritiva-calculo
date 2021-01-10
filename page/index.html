@@ -36,20 +36,20 @@
                 <span>Preencha os dados abaixo</span>
             </div>
 
-            <form action="">
+            <form >
                 <div>
-                    <label for="">Quantidade de dados:</label>
-                    <input type="text" id="size" placeholder="Ex.: 20">
                     <label for="">Dados:</label>
-                    <input type="text" placeholder="38, 32, 34, 39, 40, 54, 32...">
+                    <input type="text" id="data" placeholder="38, 32, 34, 39, 40, 54, 32...">
                     <label for="">Classes:</label>
-                    <input type="text" placeholder="Ex.: 6">
+                    <input type="number" id="classes" placeholder="Ex.: 6">
                 </div>
             </form>
+
+            <button id="btn">Calcular</button>
         </main>
 
         <aside>
-            <table>
+            <table id="tableData">
                 <tr>
                     <th>Classes</th>
                     <td>6</td>
@@ -76,34 +76,45 @@
                 </tr>
              </table>
 
-             <table>
-                <tr>
-                    <th>Limite Inferior</th>
-                    <th>Limite Superior</th>
-                    <th>Ponto Médio</th>
-                </tr>
+             <div class="calc-one">
+                <table id="tableLimitI">
+                    <tr>
+                        <th>Limite Inferior</th>
+                    </tr>
+                </table>
 
-                <tr>
-                    <td>12</td>
-                    <td>12</td>
-                    <td>12</td>
-                </tr>
+                <table id="tableLimitS">
+                    <tr>
+                        <th>Limite Superior</th>
+                    </tr>
+                </table>
 
-             </table>
+                <table id="mediumPoint">
+                    <tr>
+                        <th>Ponto Médio</th>
+                    </tr>
+                </table>
+            </div>
 
-             <table>
-                <tr>
-                    <th>Frequência</th>
-                    <th>Frequência Relativa</th>
-                    <th>Frequência Acumulada</th>
-                </tr>
+            <div class="calc-two">
+                <table id="frequency">
+                    <tr>
+                        <th>Frequência</th>
+                    </tr>
+                </table>
 
-                <tr>
-                    <td>12</td>
-                    <td>12</td>
-                    <td>12</td>
-                </tr>
-             </table>
+                <table id="frequencyRelative">
+                    <tr>
+                        <th>Frequência Relativa</th>
+                    </tr>
+                </table>
+
+                <table id="frequencyAccumulate">
+                    <tr>
+                        <th>Frequência Acumulada</th>
+                    </tr>
+                </table>
+            </div>
 
              <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                 <path fill-opacity="0.9" d="M0,160L80,133.3C160,107,320,53,480,69.3C640,85,800,171,960,170.7C1120,171,1280,85,1360,42.7L1440,0L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
@@ -114,5 +125,6 @@
     </div>
 
     <script src="/public/script/script.js"></script>
+    <script src="/public/script/calculo.js"></script>
 </body>
 </html>

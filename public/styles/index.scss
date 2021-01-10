@@ -4,7 +4,7 @@
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 12vh 70vh 10vh;
+    grid-template-rows: 12vh 100% 10vh;
     grid-template-areas: "header header"
                          "main aside"
                          "footer footer"
@@ -143,6 +143,7 @@ aside {
     justify-content: center;
     background-color: #134f57;
     grid-area: aside;
+    height: 100%;
 
     table {
         box-shadow: 0 5px 20px #131313;
@@ -166,6 +167,13 @@ aside {
             width: 30%;
             text-align: center;
         }
+    }
+
+    .calc-one,
+    .calc-two {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .wave {
