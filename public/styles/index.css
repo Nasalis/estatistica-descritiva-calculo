@@ -181,6 +181,32 @@ main form div input {
   outline: none;
 }
 
+main #btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background-color: #12b154;
+  color: #f6f6f6;
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s;
+}
+
+main #btn:hover {
+  background-color: #109949;
+}
+
 aside {
   position: relative;
   display: -webkit-box;
@@ -239,6 +265,7 @@ aside .calc-two {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 80%;
 }
 
 aside .wave {

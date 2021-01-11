@@ -133,6 +133,25 @@ main {
             }
         }
     }
+
+    #btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 8px;
+        border: none;
+        background-color: #12b154;
+        color: #f6f6f6;
+        font-weight: 600;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all ease 0.2s;
+    }
+
+    #btn:hover {
+        background-color: #109949;
+    }
 }
 
 aside {
@@ -174,6 +193,7 @@ aside {
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 80%;
     }
 
     .wave {
