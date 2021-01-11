@@ -48,6 +48,7 @@ function calcFrequency(InferiorLimit, UpperLimit, values, classes) {
 function makeLimits(maxMin, large, classes) {
     var InferiorLimit;
     var UpperLimit;
+    var limits;
     InferiorLimit = [];
     UpperLimit = [];
     for (var i = 0; i < classes; i++) {
@@ -61,7 +62,11 @@ function makeLimits(maxMin, large, classes) {
     for (var j = 0; j < classes; j++) {
         UpperLimit.push(InferiorLimit[j] + large - 1);
     }
-    return { InferiorLimit: InferiorLimit, UpperLimit: UpperLimit };
+    limits = {
+        InferiorLimit: InferiorLimit,
+        UpperLimit: UpperLimit
+    };
+    return limits;
 }
 function calcAmplitudeAndLarge(maxMin, classes) {
     var amplitude = maxMin.max - maxMin.min;
@@ -94,15 +99,18 @@ btn.addEventListener("click", function () {
     var values2;
     values2 = [];
     values.map(function (value) { return values2.push(Number(value)); });
-    var maxMin = valuesMinAndMax(values2);
-    var amplitudeAndLarge = calcAmplitudeAndLarge(maxMin, classes);
-    makeTableData(classes, maxMin, amplitudeAndLarge);
-    var limits = makeLimits(maxMin, amplitudeAndLarge.large, classes);
-    var freq = calcFrequency(limits.InferiorLimit, limits.UpperLimit, values2, classes);
-    var points = mediumPoint(limits.InferiorLimit, limits.UpperLimit, classes);
+    var maxMin;
+    maxMin = valuesMinAndMax(values2);
+    var amplitudeAndLarge;
+    amplitudeAndLarge = calcAmplitudeAndLarge(maxMin, classes);
+    var limitsValues;
+    limitsValues = makeLimits(maxMin, amplitudeAndLarge.large, classes);
+    var freq = calcFrequency(limitsValues.InferiorLimit, limitsValues.UpperLimit, values2, classes);
+    var points = mediumPoint(limitsValues.InferiorLimit, limitsValues.UpperLimit, classes);
     var freqRA = relativeAndAcumulateFrequency(freq);
-    makeOthersTables(limits.InferiorLimit, tableLimitI);
-    makeOthersTables(limits.UpperLimit, tableLimitS);
+    makeTableData(classes, maxMin, amplitudeAndLarge);
+    makeOthersTables(limitsValues.InferiorLimit, tableLimitI);
+    makeOthersTables(limitsValues.UpperLimit, tableLimitS);
     makeOthersTables(points, mp);
     makeOthersTables(freq, frequency);
     makeOthersTables(freqRA.relativeFreq, frequencyRelative);

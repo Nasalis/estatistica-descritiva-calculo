@@ -11,13 +11,17 @@ ul, a {
   text-decoration: none;
 }
 
+body.active {
+  overflow: hidden;
+}
+
 .container {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 2fr;
       grid-template-columns: 1fr 2fr;
-  -ms-grid-rows: 12vh 100% 10vh;
-      grid-template-rows: 12vh 100% 10vh;
+  -ms-grid-rows: 12vh 100% 12vh;
+      grid-template-rows: 12vh 100% 12vh;
       grid-template-areas: "header header" "main aside" "footer footer";
 }
 
@@ -226,7 +230,6 @@ aside {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: aside;
-  height: 100%;
 }
 
 aside table {
@@ -236,7 +239,7 @@ aside table {
   padding: 4px;
   border: transparent;
   width: 80%;
-  z-index: 100;
+  z-index: 10;
 }
 
 aside table th {
@@ -281,6 +284,7 @@ footer {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: footer;
+  height: 100%;
 }
 
 @media screen and (max-width: 620px) {
@@ -292,7 +296,7 @@ footer {
   }
   header .menuList {
     position: absolute;
-    height: 100vh;
+    height: 100%;
     top: 12vh;
     right: 100%;
     -webkit-transition: all ease 0.3s;
@@ -312,7 +316,7 @@ footer {
     background-color: #222;
     width: 100%;
     right: 0;
-    z-index: 1;
+    z-index: 9999999;
   }
   header .menuList.active .menuItem {
     font-size: 2rem;
@@ -330,6 +334,50 @@ footer {
   }
   header .menu-toggle {
     display: block;
+  }
+  .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  main {
+    background-color: #0b3d44;
+    width: 100%;
+    height: 100%;
+  }
+  main .main-head h1 {
+    font-size: 1.6rem;
+  }
+  main .main-head span {
+    font-size: 0.8rem;
+  }
+  aside {
+    width: 100%;
+    height: 100%;
+  }
+  aside #tableData {
+    margin-top: 8rem;
+  }
+  aside table th {
+    font-size: 0.8rem;
+  }
+  aside .calc-two {
+    margin-bottom: 8rem;
+  }
+  footer {
+    background: red;
+    width: 100%;
+    height: 100%;
   }
 }
 /*# sourceMappingURL=index.css.map */

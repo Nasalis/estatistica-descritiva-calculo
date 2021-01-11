@@ -10,6 +10,19 @@ const frequencyRelative = document.querySelector('#frequencyRelative')
 const frequencyAccumulate = document.querySelector('#frequencyAccumulate')
 
 type Dados = Array<number>
+type maxMin = {
+    min: number,
+    max: number
+}
+type Limits = {
+    InferiorLimit: Array<number>,
+    UpperLimit:Array<number>,
+}
+
+type AL = {
+    amplitude: number,
+    large: number
+}
 
 function relativeAndAcumulateFrequency(frequency: Dados) {
     let sum = 0;
@@ -56,9 +69,10 @@ function calcFrequency(InferiorLimit: Dados, UpperLimit: Dados, values: Dados, c
     return frequency;
 }
 
-function makeLimits(maxMin: object, large: number, classes: number): object {
+function makeLimits(maxMin: maxMin, large: number, classes: number) {
     let InferiorLimit: Dados
     let UpperLimit: Dados
+    let limits: Limits;
     InferiorLimit = []
     UpperLimit = []
 
@@ -74,17 +88,22 @@ function makeLimits(maxMin: object, large: number, classes: number): object {
         UpperLimit.push(InferiorLimit[j] + large - 1 )
     }
 
-    return {InferiorLimit, UpperLimit}
+    limits  = {
+        InferiorLimit: InferiorLimit,
+        UpperLimit: UpperLimit
+    }
+
+    return limits
 }
 
-function calcAmplitudeAndLarge(maxMin: object, classes: number) {
+function calcAmplitudeAndLarge(maxMin: maxMin, classes: number) {
     let amplitude= maxMin.max - maxMin.min;
     let large = Math.ceil((amplitude + 1)/classes);
 
     return {amplitude, large}
 }
 
-function valuesMinAndMax(values: Dados): object {
+function valuesMinAndMax(values: Dados) {
     let min: number
     let max: number
 
@@ -94,7 +113,7 @@ function valuesMinAndMax(values: Dados): object {
     return {min, max}
 }
 
-function makeTableData(classes: number, maxMin: object, amplitudeAndLarge: object) {
+function makeTableData(classes: number, maxMin: maxMin , amplitudeAndLarge: AL) {
     tableData.innerHTML = `
         <table id="tableData">
             <tr>
@@ -151,20 +170,23 @@ btn.addEventListener("click", () => {
 
     values.map(value => values2.push(Number(value)))
     
-    let maxMin = valuesMinAndMax(values2);
-    let amplitudeAndLarge = calcAmplitudeAndLarge(maxMin, classes)
+    let maxMin: maxMin
+    maxMin = valuesMinAndMax(values2);
 
-    makeTableData(classes, maxMin, amplitudeAndLarge);
-    
+    let amplitudeAndLarge: AL
+    amplitudeAndLarge = calcAmplitudeAndLarge(maxMin, classes)
 
-    let limits = makeLimits(maxMin,amplitudeAndLarge.large, classes)
-    let freq = calcFrequency(limits.InferiorLimit, limits.UpperLimit, values2, classes)
-    let points = mediumPoint(limits.InferiorLimit, limits.UpperLimit, classes)
+    let limitsValues: Limits
+    limitsValues = makeLimits(maxMin, amplitudeAndLarge.large, classes)
+
+    let freq = calcFrequency(limitsValues.InferiorLimit, limitsValues.UpperLimit, values2, classes)
+    let points = mediumPoint(limitsValues.InferiorLimit, limitsValues.UpperLimit, classes)
     let freqRA = relativeAndAcumulateFrequency(freq)
 
+    makeTableData(classes, maxMin, amplitudeAndLarge);
 
-    makeOthersTables(limits.InferiorLimit, tableLimitI);
-    makeOthersTables(limits.UpperLimit, tableLimitS);
+    makeOthersTables(limitsValues.InferiorLimit, tableLimitI);
+    makeOthersTables(limitsValues.UpperLimit, tableLimitS);
     makeOthersTables(points, mp);
     makeOthersTables(freq, frequency);
     makeOthersTables(freqRA.relativeFreq, frequencyRelative);
