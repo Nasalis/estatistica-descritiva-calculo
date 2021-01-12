@@ -8,7 +8,7 @@ body.active {
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 12vh 100% 12vh;
+    grid-template-rows: 12vh 100% 20vh;
     grid-template-areas: "header header"
                          "main aside"
                          "footer footer"
@@ -87,7 +87,7 @@ header {
 }
 
 main {
-    background-color: #0b3d44;
+    background: linear-gradient(to top, #09262a, #0b3d44);
     grid-area: main;
 
     .main-head {
@@ -164,7 +164,7 @@ aside {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #134f57;
+    background: linear-gradient(60deg, #0f2c2f, #134f57);
     grid-area: aside;
 
     table {
@@ -208,12 +208,68 @@ aside {
 }
 
 footer {
-    background: red;
+    background: rgb(27, 26, 26);
+    color: #f7f7f7;
     grid-area: footer;
-    height: 100%;
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .social-medias,
+    .references {
+        margin-top: 1rem;
+    }
+
+    .social-medias {
+        text-align: center;
+        width: 30%;
+        padding: 0 20px;
+
+        h4 {
+            margin-bottom: 1rem;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #dd374d;
+        }
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            li {
+                width: 100%;
+                border-bottom: 3px solid rgb(27, 26, 26);
+                transition: all ease 0.3s;
+                cursor: pointer;
+
+                i {
+                    font-size: 1.5rem;
+                }
+            }
+
+            li:hover {
+                border-bottom: 3px solid rgb(17, 110, 138);
+            }
+        }
+    }
+
+    .references {
+        text-align: center;
+        width: 30%;
+    }
 }
 
 @media screen and (max-width: 620px) {
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
     header {
 
@@ -266,13 +322,6 @@ footer {
         }
     }
 
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
     main {
         background-color: #0b3d44;
         width: 100%;
@@ -314,9 +363,22 @@ footer {
     }
 
     footer {
-        background: red;
         width: 100%;
         height: 100%;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+
+            .social-medias {
+                width: 100%;
+            }
+
+            .references {
+                padding: 30px 0;
+                width: 100%;
+            }
+        }
     }
 
 }
