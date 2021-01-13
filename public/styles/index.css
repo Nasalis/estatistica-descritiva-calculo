@@ -338,6 +338,10 @@ footer .social-medias ul li {
   cursor: pointer;
 }
 
+footer .social-medias ul li a {
+  color: #f7f7f7;
+}
+
 footer .social-medias ul li i {
   font-size: 1.5rem;
 }
